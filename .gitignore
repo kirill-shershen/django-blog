@@ -37,3 +37,5 @@ pip-log.txt
 *.pot
 local_settings.py
 sqlite.db
+
+envvars.bat
