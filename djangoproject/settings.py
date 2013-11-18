@@ -1,5 +1,5 @@
 import os
-
+BASE_DIR = os.getcwd()
 # Added to help use env variables
 def env_var(key, default=None):
     """Retrieves env vars and makes Python boolean replacements"""
@@ -120,6 +120,7 @@ ROOT_URLCONF = 'djangoproject.urls'
 WSGI_APPLICATION = 'djangoproject.wsgi.application'
 
 TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'templates'), 
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
