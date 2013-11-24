@@ -6,3 +6,8 @@ gunicorn
 psycopg2
 wsgiref
 south
+django-disqus 
+django-menu 
+django-taggit 
+django-any
+django-jenkins

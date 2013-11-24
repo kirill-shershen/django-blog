@@ -81,6 +81,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
+    'g:/work/py/django-blog/static',
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -139,8 +140,13 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'storages',
     'south',
+    'blog',
+    'disqus',
+    'taggit',
 )
 
+DISQUS_API_KEY = 'pmkA3CvbF2DUuIEpgQcBWDIgPbInvY2CrkyXq5KO8NjyO1AqnVPeDo54d5f49NWO'
+DISQUS_WEBSITE_SHORTNAME = 'kxekxeherokuappcom'
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.

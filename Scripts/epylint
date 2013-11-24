@@ -1,0 +1,3 @@
+#!G:\work\py\django-blog\Scripts\python.exe
+from pylint import epylint
+epylint.Run()
