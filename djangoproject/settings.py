@@ -15,7 +15,7 @@ DEBUG = env_var('DJ_DEBUG', False) #Unless env var is set to True, debug is off
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('Kirill Shershen', 'shkipc@gmail.com'),
 )
 
 MANAGERS = ADMINS
