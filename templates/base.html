@@ -2,6 +2,8 @@
 <html lang="ru">
     <head>
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="{{ STATIC_URL }}bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
         <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
         <title>{% block title %}Блог{% endblock %}</title>
         <link href="{{ STATIC_URL }}bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -25,7 +27,17 @@
         </script>
     </head>
 <body>
-    {% include 'header.html' %}
-    {% block content %}Empty page{% endblock %}
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span2">
+            </div>
+            <div class="span8">
+                {% include 'header.html' %}
+                {% block content %}Empty page{% endblock %}
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
 </body>
 </html>
