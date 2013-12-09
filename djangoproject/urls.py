@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from filebrowser.sites import site
+# from filebrowser.sites import site
 from django.contrib import admin
 admin.autodiscover()
 import settings
