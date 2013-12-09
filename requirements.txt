@@ -12,5 +12,4 @@ django-taggit
 django-any
 django-jenkins
 django-tinymce
-django-filebrowser==3.5.3
 Pillow
