@@ -132,9 +132,13 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    # 'django.contrib.sites',
+    'django.contrib.sites',
+    'django.contrib.flatpages',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tinymce',
+    'grappelli',
+    # 'filebrowser',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -145,6 +149,9 @@ INSTALLED_APPS = (
     'disqus',
     'taggit',
 )
+
+TINYMCE_JS_URL = "%sjs/tiny_mce/tiny_mce_src.js" % STATIC_URL
+
 
 DISQUS_API_KEY = 'pmkA3CvbF2DUuIEpgQcBWDIgPbInvY2CrkyXq5KO8NjyO1AqnVPeDo54d5f49NWO'
 DISQUS_WEBSITE_SHORTNAME = 'kxekxeherokuappcom'

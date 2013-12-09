@@ -1,15 +1,23 @@
-	<div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container">
-                <a class="brand" href="http://kxekxe.herokuapp.com/blog/">Блог</a>
-                <div class="nav-collapse collapse">
-                    <ul id="menu-menyu-v-shapke" class="nav">
-                        <li><form class="navbar-search pull-left">
-                              <input type="text" class="search-query" placeholder="Найти...">
-                            </form>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+{% load admin_urls admin_static admin_list%}
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="/blog/">Заметки на полях</a>
+            <div class="nav-collapse collapse">
+                <ul id="menu-menyu-v-shapke" class="nav">
+                    <li class="pull-left"><a href="/blog/">Блог</a></li>
+                    <li class="pull-left"><a href="/blog/archives/">Архив</a></li>
+                    <li class="pull-left"><a href="/projects/">Проекты</a></li>
+                    <li class="pull-left"><a href="/about/">Про меня</a></li>
+                    <li><form class="navbar-search pull-left">
+                          <input type="text" class="search-query" placeholder="Найти...">
+                        </form>
+                    </li>
+                    {% if user.is_staff%}
+                    <li class="pull-right"><a href="/admin/blog/post/add">Добавить пост</a></li>
+                    {% endif %}
+                </ul>
+            </div>  
         </div>
     </div>
+</div>

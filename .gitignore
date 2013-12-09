@@ -33,7 +33,7 @@ pip-log.txt
 .DS_Store
 
 #Django 
-*.log
+*.log*
 *.pot
 local_settings.py
 sqlite.db
