@@ -11,6 +11,5 @@ django-menu
 django-taggit 
 django-any
 django-jenkins
-django-tinymce
 django-grappelli
 Pillow

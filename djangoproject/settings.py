@@ -136,7 +136,6 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'tinymce',
     'grappelli',
     # 'filebrowser',
     # Uncomment the next line to enable the admin:
