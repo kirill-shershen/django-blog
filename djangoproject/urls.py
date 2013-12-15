@@ -12,6 +12,5 @@ urlpatterns = patterns('',
     url(r'^about/$', views.flat_page, name='about'),
     url(r'^projects/$', views.flat_page, name='projects'),
     url(r'^grappelli/', include('grappelli.urls')),
-    url(r'^tinymce/', include('tinymce.urls')),
     # url(r'^admin/filebrowser/', include(site.urls)),
 )
