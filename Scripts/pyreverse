@@ -1,3 +1,0 @@
-#!G:\work\py\django-blog\Scripts\python.exe
-from pylint import run_pyreverse
-run_pyreverse()
