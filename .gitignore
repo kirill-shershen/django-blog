@@ -39,3 +39,4 @@ local_settings.py
 sqlite.db
 
 envvars.bat
+todo
