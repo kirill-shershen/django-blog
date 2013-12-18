@@ -1,5 +1,8 @@
 import os
-BASE_DIR = os.getcwd()
+if os.environ['HOST'] == 'pythonanywhere':
+    BASE_DIR = os.environ['DJ_PROJECT_HOME']
+else:
+    BASE_DIR = os.getcwd()
 # Added to help use env variables
 def env_var(key, default=None):
     """Retrieves env vars and makes Python boolean replacements"""
@@ -192,7 +195,7 @@ LOGGING = {
         'production_file':{
             'level' : 'INFO',
             'class' : 'logging.handlers.TimedRotatingFileHandler',
-            'filename' : 'logs/main.log',
+            'filename' : os.path.join(BASE_DIR, 'logs/main.log'),
             'when' : 'midnight',
             'interval' :    1,
             'backupCount' : 7,
@@ -202,7 +205,7 @@ LOGGING = {
         'debug_file':{
             'level' : 'DEBUG',
             'class' : 'logging.handlers.TimedRotatingFileHandler',
-            'filename' : 'logs/main_debug.log',
+            'filename' : os.path.join(BASE_DIR, 'logs/main_debug.log'),
             'when' : 'midnight',
             'interval' :    1,
             'backupCount' : 7,
