@@ -234,7 +234,9 @@ LOGGING = {
         },
     }
 }
-
+import dj_database_url
+DATABASES['default'] =  dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
 # Parse database configuration from $DATABASE_URL
 if os.environ['HOST'] == 'pythonanywhere':
     DATABASES = {
@@ -252,11 +254,7 @@ if os.environ['HOST'] == 'pythonanywhere':
     STATIC_URL = '/static/'
     STATIC_ROOT = '/home/kxekxe/kxekxe/static'
     ADMIN_MEDIA_PREFIX = '/static/admin/'
-else:
-    import dj_database_url
-    DATABASES['default'] =  dj_database_url.config(default=os.environ.get('DATABASE_URL'))
-    DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
-
+if os.environ['HOST'] == 'heroku':
     AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
     AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
     AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']

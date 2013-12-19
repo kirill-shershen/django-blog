@@ -33,11 +33,12 @@ pip-log.txt
 .DS_Store
 
 #Django 
+tiny_mce_popup.js
+tiny_mce.js
 *.log*
 *.pot
 local_settings.py
 sqlite.db
-
 envvars.bat
 todo
 Scripts
