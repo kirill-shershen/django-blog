@@ -150,9 +150,18 @@ INSTALLED_APPS = (
     'blog',
     'disqus',
     'taggit',
+    'taggit_templatetags',
 )
 
-TINYMCE_JS_URL = "%sjs/tiny_mce/tiny_mce_src.js" % STATIC_URL
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.request',
+    'django.core.context_processors.static',
+)  
+# TINYMCE_JS_URL = "%sjs/tiny_mce/tiny_mce_src.js" % STATIC_URL
 
 
 DISQUS_API_KEY = 'pmkA3CvbF2DUuIEpgQcBWDIgPbInvY2CrkyXq5KO8NjyO1AqnVPeDo54d5f49NWO'

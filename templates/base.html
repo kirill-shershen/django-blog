@@ -43,8 +43,9 @@
     </head>
 <body>
     <div class="container-fluid">
-        <div class="row-fluid">
+        <div class="row-fluid" style="min-height:420px;">
             <div class="span2">
+            {% include 'tags.html' %}
             </div>
             <div class="span8">
                 {% include 'header.html' %}
@@ -53,6 +54,10 @@
             <div class="span2">
             </div>
         </div>
+    </div>
+    <div class="footer">
+        <p style="text-align:center">Copyright &copy; 2013 - <a href="mailto:shkipc@gmail.com">Kirill Shershen</a> - Powered by
+        <a href="https://www.djangoproject.com/" target="_blank">Django</a></p>
     </div>
 </body>
 </html>

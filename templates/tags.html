@@ -1,0 +1,15 @@
+{% load taggit_extras %}
+
+{% block content %}
+<blockquote><h4 style="border-bottom: 1px solid;padding-bottom: 5px;">Теги</h4></blockquote>
+<div class="bs-docs-sidebar">
+    {% get_taglist as tags for 'blog.post' %}
+    <ul class="nav nav-list bs-docs-sidenav">
+    {% for tag in tags %}
+    <li><a href="/blog/tag/{{tag}}"><i class="icon-chevron-right"></i>{{ tag }} ({{ tag.num_times }})</a></li>
+    {% empty %}
+    <li>There don't appear to be any tags yet!</li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}
