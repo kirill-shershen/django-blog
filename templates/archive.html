@@ -1,0 +1,12 @@
+{% load taggit_extras %}
+
+{% block content %}
+<blockquote><h4 style="border-bottom: 1px solid;padding-bottom: 5px;">Архив</h4></blockquote>
+<div class="bs-docs-sidebar">
+    <ul class="nav nav-list bs-docs-sidenav">
+    {% for month in month_list %}
+    <li><a href="/blog/archive/{{ month.0 }}/{{ month.1 }}/"><i class="icon-chevron-right"></i>{{ month.0 }} {{ month.2 }} ({{ month.3 }})</a></li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}

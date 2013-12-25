@@ -9,6 +9,7 @@ south
 django-disqus 
 django-menu 
 django-taggit 
+django-taggit-templatetags
 django-any
 django-jenkins
 django-grappelli

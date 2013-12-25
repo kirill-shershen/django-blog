@@ -2,10 +2,14 @@
 <html lang="ru">
     <head>
         <meta charset="utf-8" />
+        <meta name="ROBOTS" content="ALL" />
+        <meta name="Copyright" content="Kirill Shershen" />
+        <meta name="keywords" content="Python, Django, web, blog, программирование, разработка" /> 
+        <meta name="description" content="Блог разработчика Python, Django" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="{{ STATIC_URL }}bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
         <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
-        <title>{% block title %}Заметки на полях{% endblock %}</title>
+        <title>{% block title %}Заметки на полях. Django blog{% endblock %}</title>
         <link href="{{ STATIC_URL }}bootstrap/css/bootstrap.css" rel="stylesheet">
         <style>
             body {
@@ -46,6 +50,7 @@
         <div class="row-fluid" style="min-height:420px;">
             <div class="span2">
             {% include 'tags.html' %}
+            {% include 'archive.html' %}
             </div>
             <div class="span8">
                 {% include 'header.html' %}
