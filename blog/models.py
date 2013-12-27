@@ -1,5 +1,6 @@
 from django.db import models
 from taggit.managers import TaggableManager
+from django.forms import ModelForm
 
 class PublicManager(models.Manager):
     def get_query_set(self):

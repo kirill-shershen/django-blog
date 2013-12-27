@@ -12,6 +12,7 @@ class CollectionAdmin(admin.ModelAdmin):
         js = (
             '%stinymce/tiny_mce.js' % settings.STATIC_URL, 
             '%stinymce/tiny_mce_init.js' % settings.STATIC_URL,
+            '%sadmin/js/dsbTags.js' % settings.STATIC_URL,
         )
 
 class PostAdmin(CollectionAdmin):
