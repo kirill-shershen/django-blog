@@ -1,8 +1,5 @@
 {% extends "base.html" %}
-
 {% block content %}
 <h4 style="text-align:center">Статьи с тегом: {{ tag }}. <small><a href="/blog/"><вернуться на главную></a></small></h4>
-{% for post in posts %}
-<p>{{post.created|date:"Y-m-d"}}<a href="/blog/{{post.id}}">  {{post.title}}</a></p>
-{% endfor %}
-{% endblock %}    
+{% include 'blog_posts.html' %}
+{% endblock %}

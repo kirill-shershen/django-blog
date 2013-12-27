@@ -151,7 +151,7 @@ INSTALLED_APPS = (
     'disqus',
     'taggit',
     'taggit_templatetags',
-)
+ )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',

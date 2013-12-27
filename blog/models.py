@@ -9,7 +9,7 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     body = models.TextField()
     created = models.DateTimeField()
-    tags = TaggableManager()
+    tags = TaggableManager(blank = True)
     public= models.BooleanField(default=True)
     objects = models.Manager()
     publics = PublicManager()

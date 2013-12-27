@@ -8,7 +8,7 @@ def index(request):
 	return render(request, 'index.html')
 
 def tagpage(request, tag):
-    posts = Post.objects.filter(tags__name=tag)
+    object_list = Post.publics.filter(tags__name=tag)
     return render(request, "tagpage.html", locals())
 
 class PostListView(ListView):
