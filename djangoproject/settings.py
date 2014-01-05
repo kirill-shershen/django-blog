@@ -166,7 +166,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 
 DISQUS_API_KEY = 'pmkA3CvbF2DUuIEpgQcBWDIgPbInvY2CrkyXq5KO8NjyO1AqnVPeDo54d5f49NWO'
-DISQUS_WEBSITE_SHORTNAME = 'kxekxeherokuappcom'
+DISQUS_WEBSITE_SHORTNAME = '2kxe'
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.
