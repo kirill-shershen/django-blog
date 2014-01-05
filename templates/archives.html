@@ -1,7 +1,8 @@
 {% extends "base.html" %}
-
 {% block content %}
 {% for post in object_list %}
-<p>{{post.created|date:"Y-m-d"}}<a href="/blog/{{post.id}}">  {{post.title}}</a></p>
+<ul>
+    <li>{{ post.created|date:"Y.m.d"}} <a href="/blog/{{post.id}}">{{post.title}}</a></li>
+</ul>
 {% endfor %}
-{% endblock %}    
+{% endblock %}
