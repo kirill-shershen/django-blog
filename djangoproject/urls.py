@@ -13,6 +13,6 @@ urlpatterns = patterns('',
     url(r'^about/$', views.flat_page, name='about'),
     url(r'^projects/$', views.flat_page, name='projects'),
     url(r'^grappelli/', include('grappelli.urls')),
-    url(r'^robots\.txt$', lambda r: HttpResponse("User-agent: *\nDisallow: /", mimetype="text/plain")),
+    url(r'^robots\.txt$', lambda r: HttpResponse("User-agent: *\nDisallow: /admin/", mimetype="text/plain")),
     # url(r'^admin/filebrowser/', include(site.urls)),
 )
