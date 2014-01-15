@@ -269,7 +269,7 @@ if os.environ['HOST'] == 'heroku':
     AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
     AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
     STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-    STATIC_URL = AWS_STORAGE_BUCKET_NAME
+    STATIC_URL = '%s/' % AWS_STORAGE_BUCKET_NAME
 # if DEBUG:
 #     DATABASES['default'].update({
 #         'NAME':'dj-blog',
