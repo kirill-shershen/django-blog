@@ -38,7 +38,7 @@ DATABASES = {
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
 # SET TO THE SUBDOMAIN ON HEROKU, ANYWHERE ELSE IT'S HOSTED (INSECURE PRESENTLY)    <--------!!!!!
-ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1', '.pythonanywhere.com', '2kxe.ru']
+ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1', '.pythonanywhere.com', '.2kxe.ru']
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -269,8 +269,7 @@ if os.environ['HOST'] == 'heroku':
     AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
     AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
     STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-    S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
-    STATIC_URL = S3_URL
+    STATIC_URL = AWS_STORAGE_BUCKET_NAME
 # if DEBUG:
 #     DATABASES['default'].update({
 #         'NAME':'dj-blog',
