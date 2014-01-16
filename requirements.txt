@@ -3,7 +3,7 @@ boto
 dj-database-url
 django-storages
 gunicorn
-mysql-python
+psycopg2
 wsgiref
 south
 django-disqus 
