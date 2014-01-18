@@ -1,5 +1,7 @@
 {% extends "base.html" %}
-
+{% block title %}
+{{post.title}}
+{% endblock %}
 {% block content %}
 <h3><a href="/blog/{{post.id}}">{{post.title}}</a></h3>
 <div>
@@ -27,4 +29,4 @@
     {% load disqus_tags %}
     {% disqus_show_comments %}
 </p>
-{% endblock %}    
+{% endblock %}
