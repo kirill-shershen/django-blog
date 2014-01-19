@@ -50,7 +50,7 @@ TIME_ZONE = 'Europe/Moscow'
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'ru-ru'
 
-SITE_ID = 1
+SITE_ID = int(os.environ['SITE_ID'])
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
@@ -107,6 +107,7 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
+    # 'django.template.loaders.app_directories.Loader.load_template_source',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -139,6 +140,7 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
     'grappelli',
     # 'filebrowser',
     # Uncomment the next line to enable the admin:
