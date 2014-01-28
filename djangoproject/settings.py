@@ -153,6 +153,7 @@ INSTALLED_APPS = (
     'disqus',
     'taggit',
     'taggit_templatetags',
+    'rates',
  )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -246,6 +247,8 @@ LOGGING = {
         },
     }
 }
+
+THREADS_COUNT = os.environ['THREADS_COUNT']
 import dj_database_url
 DATABASES['default'] =  dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
