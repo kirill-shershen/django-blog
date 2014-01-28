@@ -7,18 +7,22 @@ class Bank(models.Model):
     xpath = models.CharField(max_length = 300, blank = True)
 
     def __unicode__(self):
-        pass
-class BankContacts(models.Model):
+        return self.name
+
+class BankContact(models.Model):
     contact_type = (
         ('ad', u'Адрес'),
         ('tl', u'Телефон'),
         ('ml', u'Электронная почта'),
     )
     bank = models.ForeignKey(Bank)
-    contact = models.CharField(max_length=2, choices=contact_type, verbose_name=u'Вид информации')
+    contacttype = models.CharField(max_length=2, choices=contact_type, verbose_name=u'Вид информации')
     value = models.CharField(max_length = 200, verbose_name = u'Значение')
 
-class BankRates(models.Model):
+    def __unicode__(self):
+        return "%s - %s:%s" % (self.bank.name, self.contacttype, self.value)
+
+class BankRate(models.Model):
     rate_type = (
         ('USD', u'Американский доллар'),
         ('UER', u'Евро'),
