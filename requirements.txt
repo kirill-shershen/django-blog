@@ -14,3 +14,4 @@ django-any
 django-jenkins
 django-grappelli
 Pillow
+yql
