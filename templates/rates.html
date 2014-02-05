@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h4>Курс на {{last_time.checktime}}</h4>
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>Банк</th>
+            <th>Курс</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for rate in rates %}
+        <tr>
+            <td>{{ rate.bank.name }}</td>
+            <td>{{ rate.value }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

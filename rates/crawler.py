@@ -1,11 +1,76 @@
+# -*- coding: utf-8 -*-
 import os, urllib2, yql, sys, time
 import thread, threading
+from decimal import Decimal
 from djangoproject import settings
-
+from rates.models import Bank, BankRate
 class RateParser():
 
-    def __init__(self):
-        pass
+    def __init__(self, check_date):
+        self.banks = []
+        self.threads = 0
+        self.date = check_date
 
     def do_parse(self):
-        pass
+        banks = Bank.objects.all()
+        for b in banks:
+            self.banks.append(b)
+        while (len(self.banks)>0):
+            if (settings.THREADS_COUNT > self.threads):
+                bank = self.banks.pop()
+                self.threads += 1
+                thread.start_new_thread(self.get_rate, (bank,))
+            else:
+                pass
+
+    def get_rate(self, bank):
+        self.get_from_bank(bank)
+        self.threads -= 1
+
+    def get_from_bank(self, bank):
+        bank_info = Bank.objects.filter(name=bank)[0]
+        if bank_info.URL == 'none' or bank_info.URL == '':
+            exit
+        if settings.DEBUG:
+            print bank_info.xpath
+        if bank_info.xpath != 'none' and bank_info.xpath != '':
+            try:
+                site = y = yql.Public()
+                query = 'select * from html where url="%s" and xpath="%s"' % (bank_info.URL, bank_info.xpath)
+                result = y.execute(query)
+                if result.results:
+                    if settings.DEBUG:
+                        print result.rows
+                    if  bank_info.name in ['Восточный экспресс'] :
+                        val = result.results.values()[0][0]
+                    elif  bank_info.name in ['КУРСКПРОМБАНК', 'Нордеа Банк', 'Банк Россия', 'ВТБ 24', 'Инвестторгбанк', 'Липецккомбанк', 'ЛОКО-БАНК', 'МАСТ-Банк',
+                          'Газпромбанк', 'Мой Банк', 'Московский Индустриальный Банк', 'Пробизнесбанк',
+                          'Промсвязьбанк', 'Райффайзенбанк', 'РосЕвроБанк', 'ХКФ Банк',
+                          'Юниаструм Банк', 'ЮниКредит Банк', 'РУСНАРБАНК']:
+                        val = result.rows[0]
+                    else:
+                        val = result.results.values()[0]
+                    if type(val) == type(dict()):
+                        if bank_info.name in ['ТРАНСКАПИТАЛБАНК', 'ВТБ 24'] :
+                            val = val.get('p').get('content')[:5]
+                        elif bank_info.name in ['Газпромбанк', 'Инвестторгбанк', 'МАСТ-Банк', 'РосЕвроБанк']:
+                            val = val.get('content').strip()[:5]
+                        elif bank_info.name in ['Банк Россия']:
+                            val = val.get('strong')
+                        else:
+                            val = val.get('p')
+                    if type(val) == type([]):
+                        val = val[0][:5]
+                    if val:
+                        try:
+                            val = val.replace('-','.').replace(',','.')[:5]
+                            val = Decimal(val)
+                        except:
+                            val = 0
+                        if settings.DEBUG:
+                            print str(val)
+                        p = BankRate(bank=bank_info, rate="USD", value=val, checktime=self.date)
+                        p.save()
+                        
+            except Exception, err:
+                print err

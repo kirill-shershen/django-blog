@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+<div class="container-fluid">
+    <div class="row-fluid" style="min-height:420px;">
+        <div class="span2">
+        {% include 'tags.html' %}
+        {% include 'archive.html' %}
+        </div>
+        <div class="span8">
+            {% block content %}Empty page{% endblock %}
+        </div>
+        <div class="span2">
+        </div>
+    </div>
+</div>

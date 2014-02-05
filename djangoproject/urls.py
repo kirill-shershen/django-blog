@@ -22,6 +22,7 @@ sitemaps = {
 urlpatterns = patterns('',
     url(r'^$', include('blog.urls')),
     url(r'^blog/', include('blog.urls')),
+    url(r'^rates/', include('rates.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^about/$', views.flat_page, name='about'),
     url(r'^projects/$', views.flat_page, name='projects'),

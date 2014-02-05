@@ -9,6 +9,9 @@ class Bank(models.Model):
     def __unicode__(self):
         return self.name
 
+    class Meta:
+        ordering = ["name"]
+
 class BankContact(models.Model):
     contact_type = (
         ('ad', u'Адрес'),
@@ -33,4 +36,7 @@ class BankRate(models.Model):
     bank = models.ForeignKey(Bank)
     rate = models.CharField(max_length = 3, choices=rate_type, verbose_name=u'Валюта')
     value = models.DecimalField(max_digits = 5, decimal_places = 2, verbose_name=u'Курс')
-    checktime = models.DateTimeField(auto_now_add = True, verbose_name=u'Время обновления')
+    checktime = models.DateTimeField(verbose_name=u'Время обновления')
+
+    def bank_name(self, id):
+        return Bank.objects.get(pk=id).name
