@@ -28,13 +28,14 @@ class RateParser():
         self.threads -= 1
 
     def get_from_bank(self, bank):
-        bank_info = Bank.objects.filter(name=bank)[0]
+        bank_info = bank
         if bank_info.URL == 'none' or bank_info.URL == '':
             exit
         if settings.DEBUG:
             print bank_info.xpath
         if bank_info.xpath != 'none' and bank_info.xpath != '':
             try:
+                print bank_info.name                
                 site = y = yql.Public()
                 query = 'select * from html where url="%s" and xpath="%s"' % (bank_info.URL, bank_info.xpath)
                 result = y.execute(query)
