@@ -38,5 +38,8 @@ class BankRate(models.Model):
     value = models.DecimalField(max_digits = 5, decimal_places = 2, verbose_name=u'Курс')
     checktime = models.DateTimeField(verbose_name=u'Время обновления')
 
+    def __unicode__(self):
+        return "%s-%s" %(self.bank.name, self.checktime.strftime('%Y.%m.%d'))
+
     def bank_name(self, id):
         return Bank.objects.get(pk=id).name

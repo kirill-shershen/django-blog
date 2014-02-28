@@ -17,7 +17,7 @@ class CollectionAdmin(admin.ModelAdmin):
 
 class PostAdmin(CollectionAdmin):
     list_display = ('title', 'created', 'public') 
-    ordering = ('created', 'public')
+    ordering = ('-created', 'public')
 
 admin.site.register(Post, PostAdmin)
 admin.site.unregister(FlatPage)

@@ -18,8 +18,8 @@ def get_month_list(request):
         if y == from_year: end = from_month-1
 
         for m in range(start, end, -1):
-            ed = monthrange(y, m)[1]
-            post_count = Post.publics.filter(created__range = (datetime.date(y,m,1),datetime.date(y,m,ed))).count()
+            ed = datetime.datetime(y,m,monthrange(y, m)[1]) + datetime.timedelta(seconds=86339)
+            post_count = Post.publics.filter(created__range = (datetime.date(y,m,1), ed)).count()
             if post_count >= 1:
                 months.append((y, m, month_name[m], post_count))
 

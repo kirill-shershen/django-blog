@@ -31,17 +31,16 @@ class RateParser():
         bank_info = bank
         if bank_info.URL == 'none' or bank_info.URL == '':
             exit
-        if settings.DEBUG:
-            print bank_info.xpath
+        print bank_info.xpath
         if bank_info.xpath != 'none' and bank_info.xpath != '':
             try:
                 print bank_info.name                
                 site = y = yql.Public()
                 query = 'select * from html where url="%s" and xpath="%s"' % (bank_info.URL, bank_info.xpath)
                 result = y.execute(query)
+                print result.results
                 if result.results:
-                    if settings.DEBUG:
-                        print result.rows
+                    print result.rows
                     if  bank_info.name in ['Восточный экспресс'] :
                         val = result.results.values()[0][0]
                     elif  bank_info.name in ['КУРСКПРОМБАНК', 'Нордеа Банк', 'Банк Россия', 'ВТБ 24', 'Инвестторгбанк', 'Липецккомбанк', 'ЛОКО-БАНК', 'МАСТ-Банк',
@@ -68,10 +67,9 @@ class RateParser():
                             val = Decimal(val)
                         except:
                             val = 0
-                        if settings.DEBUG:
-                            print str(val)
+                        print str(val)
                         p = BankRate(bank=bank_info, rate="USD", value=val, checktime=self.date)
                         p.save()
                         
             except Exception, err:
-                print err
+                print 'error: %s'%err
