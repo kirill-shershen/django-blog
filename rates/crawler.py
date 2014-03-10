@@ -4,7 +4,6 @@ import thread, threading
 from decimal import Decimal
 from djangoproject import settings
 from rates.models import Bank, BankRate
-import httplib2
 
 class RateParser():
 
@@ -38,7 +37,7 @@ class RateParser():
         if bank_info.xpath != 'none' and bank_info.xpath != '':
             try:
                 print bank_info.name                
-                site = y = yql.Public(httplib2_inst=httplib2.Http())
+                site = y = yql.Public()
                 query = 'select * from html where url="%s" and xpath="%s"' % (bank_info.URL, bank_info.xpath)
                 result = y.execute(query)
                 print result.results
