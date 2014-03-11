@@ -60,4 +60,4 @@ class RateParser():
                         p.save()
                         
             except Exception, err:
-                print '%s: error: %s'%(bank_info.name, err)
+                print 'error: %s'%(err)
