@@ -1,5 +1,5 @@
 set DATABASE_URL=postgres://postgres:root@127.0.0.1:5432/dj-blog
-set DJ_DEBUG=False
+set DJ_DEBUG=True
 set HOST=local
 set DJ_SECRET_KEY=g+b9HttQxSzJQG2AjoDe4dfUMi7YCsoJBKQhvfMf
 set AWS_STORAGE_BUCKET_NAME=static.kxekxe.herokuapp.com
