@@ -27,7 +27,7 @@ class Post(models.Model):
 class Project(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=300)
-    image = models.ImageField(upload_to='uploads')
+    image = models.CharField(max_length=200)
     url = models.CharField(max_length=200)
     priority = models.IntegerField(max_length=100, default=0)
 
