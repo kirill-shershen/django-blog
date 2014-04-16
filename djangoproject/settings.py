@@ -3,6 +3,7 @@ if os.environ['HOST'] == 'pythonanywhere':
     BASE_DIR = os.environ['DJ_PROJECT_HOME']
 else:
     BASE_DIR = os.getcwd()
+
 # Added to help use env variables
 def env_var(key, default=None):
     """Retrieves env vars and makes Python boolean replacements"""
@@ -14,7 +15,7 @@ def env_var(key, default=None):
     return val
 
 # Django settings for djangoproject project.
-DEBUG = env_var('DJ_DEBUG', False) #Unless env var is set to True, debug is off
+DEBUG = env_var('DJ_DEBUG', False)#Unless env var is set to True, debug is off
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -70,13 +71,13 @@ MEDIA_ROOT = ''
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://example.com/media/", "http://media.example.com/"
-MEDIA_URL = ''
+MEDIA_URL = '/media/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = os.path.join(BASE_DIR, 'media')
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"

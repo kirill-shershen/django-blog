@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block styles %}
+<link href="{{ STATIC_URL }}css/styles.css" rel="stylesheet">
+{% endblock %}
+{% block page %}
+
+<script type='text/javascript'>
+function change_location(href) {
+   location.href=href;
+}
+</script>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="span2">
+        {% include 'tags.html' %}
+        {% include 'archive.html' %}
+        </div>
+        {% for rec1, rec2, rec3, rec4, rec5 in kort %}
+        <div class="span2">
+            <div class="box-2 img-set">
+                <a href="{{ rec1.url }}"><img src="{{ rec1.image.url }}"></a>
+                <div class="title" onclick="javascript: change_location('{{ rec1.url }}')">{{ rec1.name }}</div>
+                <div class="desc">{{ rec1.description|safe|truncatewords_html:15 }}</div>
+            </div>
+        </div>
+        {% if rec2 %}
+        <div class="span2"> 
+            <div class="box-2 img-set">
+                <a href="{{ rec2.url }}"><img  src="{{ rec2.image.url }}"></a>
+                <div class="title" onclick="javascript: change_location('{{ rec2.url }}')" style="cursor:pointer">{{ rec2.name }}</div>
+                <div class="desc">{{ rec2.description|safe|truncatewords_html:15 }}</div>
+            </div>
+        </div>
+        {% endif %}
+        {% if rec3 %}
+        <div class="col-md-2"> 
+            <div class="box-2">
+                <img width="280" height="280" class="thumbnail" src="{{ rec3.image.url }}">
+                <h3>{{ rec3.name }}</h3>
+                <p>{{ rec3.description|safe|truncatewords_html:15 }}</p>
+                <a href="/projects/{{rec3.id}}" class="more_btn">Узнать больше</a> 
+            </div>
+        {% endif %}
+        {% if rec4 %}
+        <div class="col-md-2"> 
+            <div class="box-2">
+                <img width="280" height="280" class="thumbnail" src="{{ rec4.image.url }}">
+                <h3>{{ rec4.name }}</h3>
+                <p>{{ rec4.description|safe|truncatewords_html:15 }}</p>
+                <a href="/projects/{{rec4.id}}" class="more_btn">Узнать больше</a> 
+            </div>
+        {% endif %}
+        {% if rec5 %}
+        <div class="col-md-2"> 
+            <div class="box-2">
+                <img width="280" height="280" class="thumbnail" src="{{ rec5.image.url }}">
+                <h3>{{ rec5.name }}</h3>
+                <p>{{ rec5.description|safe|truncatewords_html:15 }}</p>
+                <a href="/projects/{{rec5.id}}" class="more_btn">Узнать больше</a> 
+            </div>
+        {% endif %}
+        {% endfor %} 
+        </div>
+    </div>
+</div>
+{% endblock %}

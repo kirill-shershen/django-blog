@@ -11,4 +11,5 @@ urlpatterns = patterns('blog.views',
     url(r'^archives/$', ListView.as_view(queryset=Post.publics.all(), template_name='archives.html')),
     url(r"^archives/(\d+)/(\d+)/$", "month"),
     url(r'^tag/(?P<tag>\w+)$', 'tagpage'),
+    # url(r'^projects/$', projects, name='projects'),
 )
