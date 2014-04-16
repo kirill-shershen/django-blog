@@ -15,7 +15,7 @@ def env_var(key, default=None):
     return val
 
 # Django settings for djangoproject project.
-DEBUG = env_var('DJ_DEBUG', False)#Unless env var is set to True, debug is off
+DEBUG = env_var('DJ_DEBUG', False) #Unless env var is set to True, debug is off
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -271,7 +271,7 @@ if os.environ['HOST'] == 'pythonanywhere':
     STATIC_ROOT = '/home/kxekxe/kxekxe/static'
     ADMIN_MEDIA_PREFIX = '/static/admin/'
 if os.environ['HOST'] == 'heroku':
-    MEDIA_ROOT = '/app/media/'
+    MEDIA_ROOT = '/media/'
     AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
     AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
     AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
