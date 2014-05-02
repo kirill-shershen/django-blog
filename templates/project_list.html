@@ -17,6 +17,7 @@ function change_location(href) {
         {% include 'archive.html' %}
         </div>
         {% for rec1, rec2, rec3, rec4, rec5 in kort %}
+	{% if rec1 %}
         <div class="span2">
             <div class="box-2 img-set">
                 <a href="{{ rec1.url }}"><img src="{{ rec1.image }}"></a>
@@ -24,6 +25,7 @@ function change_location(href) {
                 <div class="desc">{{ rec1.description|safe|truncatewords_html:15 }}</div>
             </div>
         </div>
+	{% endif %}
         {% if rec2 %}
         <div class="span2"> 
             <div class="box-2 img-set">
