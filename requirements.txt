@@ -1,5 +1,5 @@
 Django
-boto
+boto3
 dj-database-url
 django-storages
 gunicorn
