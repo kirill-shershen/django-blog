@@ -23,6 +23,9 @@ class Post(models.Model):
     def get_absolute_url(self):
         return '/blog/%i' % self.id
 
+    # class Meta:
+    #     ordering = ['-created']
+
 
 class Project(models.Model):
     name = models.CharField(max_length=100)
