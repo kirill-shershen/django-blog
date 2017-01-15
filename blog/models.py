@@ -29,7 +29,7 @@ class Project(models.Model):
     description = models.CharField(max_length=300)
     image = models.CharField(max_length=200)
     url = models.CharField(max_length=200)
-    priority = models.IntegerField(max_length=100, default=0)
+    priority = models.IntegerField(default=0)
 
     def get_absolute_url(self):
         return '/projects/%i' % self.id

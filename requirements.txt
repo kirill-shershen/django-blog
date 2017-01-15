@@ -5,11 +5,10 @@ django-storages
 gunicorn
 psycopg2
 wsgiref
-south
 django-disqus 
 django-menu 
 django-taggit 
-django-taggit-templatetags
+django-taggit-templatetags2
 django-any
 django-jenkins
 django-grappelli

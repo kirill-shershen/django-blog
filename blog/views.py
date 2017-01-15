@@ -18,6 +18,7 @@ def tagpage(request, tag):
 class PostListView(ListView):
     """docstring for PostListView"""
     model = Post
+    ordering = ['-created']
     paginate_by = 10
 
 

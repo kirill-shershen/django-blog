@@ -2,8 +2,8 @@
 <blockquote><h4 style="border-bottom: 1px solid;padding-bottom: 5px;">Архив</h4></blockquote>
 <div class="bs-docs-sidebar">
     <ul class="nav nav-list bs-docs-sidenav">
-    {% for month in month_list %}
-    <li><a href="/blog/archives/{{ month.0 }}/{{ month.1 }}/"><i class="icon-chevron-right"></i>{{ month.0 }} {{ month.2 }} ({{ month.3 }})</a></li>
+    {% for m in month_list %}
+    <li><a href="/blog/archives/{{ m.month|date:"Y" }}/{{ m.month|date:"m" }}/"><i class="icon-chevron-right"></i>{{ m.month|date:"M Y" }} ({{ m.c }})</a></li>
     {% endfor %}
     </ul>
 </div>

@@ -38,7 +38,7 @@
             <li><a href="/blog?page={{ page_obj.next_page_number }}">&lt;&lt;</a></li>
         {% endif %}
         {% for p in page_obj.paginator.page_range reversed %}
-            <li class="{% if page_obj.number = p %} active{% endif %}"><a href="?page={{p}}">{{p}}</a></li>
+            <li class="{% if page_obj.number == p %} active{% endif %}"><a href="?page={{p}}">{{p}}</a></li>
         {% endfor %}
         {% if page_obj.has_previous %}
             <li><a href="/blog?page={{ page_obj.previous_page_number }}">&gt;&gt;</a></li>

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 if os.environ['HOST'] == 'pythonanywhere':
     BASE_DIR = os.environ['DJ_PROJECT_HOME']
@@ -62,7 +63,7 @@ USE_I18N = True
 USE_L10N = True
 
 # If you set this to False, Django will not use timezone-aware datetimes.
-USE_TZ = True
+USE_TZ = False
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
@@ -103,14 +104,6 @@ STATICFILES_FINDERS = (
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = os.environ['DJ_SECRET_KEY']
 
-# List of callables that know how to import templates from various sources.
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
-    # 'django.template.loaders.app_directories.Loader.load_template_source',
-)
-
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -126,12 +119,29 @@ ROOT_URLCONF = 'djangoproject.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'djangoproject.wsgi.application'
 
-TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'templates'), 
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-)
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'APP_DIRS': True,
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'), 
+        ],
+        'OPTIONS': {
+            'context_processors': [
+                # Insert your TEMPLATE_CONTEXT_PROCESSORS here or use this
+                # list if you haven't customized them:
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages',
+                'blog.context_processors.get_month_list',
+            ],
+        },
+    },
+]
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -149,23 +159,13 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
     'storages',
-    'south',
     'blog',
     'disqus',
     'taggit',
-    'taggit_templatetags',
+    'taggit_templatetags2',
     'rates',
  )
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.contrib.auth.context_processors.auth',
-    'django.core.context_processors.debug',
-    'django.core.context_processors.i18n',
-    'django.core.context_processors.media',
-    'django.core.context_processors.request',
-    'django.core.context_processors.static',
-    'blog.context_processors.get_month_list',
-)  
 # TINYMCE_JS_URL = "%sjs/tiny_mce/tiny_mce_src.js" % STATIC_URL
 
 
@@ -206,28 +206,8 @@ LOGGING = {
             'class': 'logging.StreamHandler',
             'formatter': 'main_formatter',
         },
-        'production_file':{
-            'level' : 'INFO',
-            'class' : 'logging.handlers.TimedRotatingFileHandler',
-            'filename' : os.path.join(BASE_DIR, 'logs/main.log'),
-            'when' : 'midnight',
-            'interval' :    1,
-            'backupCount' : 7,
-            'formatter': 'main_formatter',
-            'filters': ['require_debug_false'],
-        },
-        'debug_file':{
-            'level' : 'DEBUG',
-            'class' : 'logging.handlers.TimedRotatingFileHandler',
-            'filename' : os.path.join(BASE_DIR, 'logs/main_debug.log'),
-            'when' : 'midnight',
-            'interval' :    1,
-            'backupCount' : 7,
-            'formatter': 'main_formatter',
-            'filters': ['require_debug_true'],
-        },
         'null': {
-            "class": 'django.utils.log.NullHandler',
+            "class": 'logging.NullHandler',
         }
     },
     'loggers': {
@@ -243,7 +223,7 @@ LOGGING = {
             'handlers': ['null', ],
         },
         '': {
-            'handlers': ['console', 'production_file', 'debug_file'],
+            'handlers': ['console'],
             'level': "DEBUG",
         },
     }
@@ -288,5 +268,3 @@ if os.environ['HOST'] == 'heroku':
 #         })
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
-
