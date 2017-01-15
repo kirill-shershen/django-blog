@@ -1,7 +1,7 @@
 Django
 boto3
 dj-database-url
-django-storages
+django-storages-redux
 gunicorn
 psycopg2
 wsgiref
