@@ -11,5 +11,5 @@ def get_month_list(request):
         return []
 
     months = Post.objects.filter(public=True).annotate(month=TruncMonth('created')).values('month').annotate(c=Count('id'))[:12]
-    
+
     return {'month_list': months}
